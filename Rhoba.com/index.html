@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>浩霸集團（香港）控股有限公司 | RHOBA GROUP</title>
+    
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <style>
+        /* --- 核心變量與基礎重置 --- */
+        :root {
+            --primary-color: #0F1E36;    /* 深邃墨藍 */
+            --accent-color: #C5A880;     /* 精英香檳金 */
+            --text-dark: #2B2B2B;        /* 質感深灰 */
+            --text-light: #666666;       /* 次要文本 */
+            --bg-light: #F8F9FA;         /* 淺灰背景 */
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, "Microsoft JhengHei";
+        }
+
+        body {
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+            -webkit-tap-highlight-color: transparent; 
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* --- 頂部聯絡條 --- */
+        .top-bar {
+            background-color: #0a1424;
+            color: rgba(255,255,255,0.7);
+            font-size: 13px;
+            padding: 8px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(197, 168, 128, 0.2);
+        }
+        .top-bar-info span {
+            margin-right: 20px;
+        }
+
+        /* --- 主導航欄 --- */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            width: 95%;
+            max-width: 1440px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            position: relative;
+        }
+
+        /* ==========================================================================
+           🌟 左上角 LOGO 與公司中英文名稱（中文縮小一號，保持一致長度）
+           ========================================================================== */
+        .logo-link {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+            z-index: 1002;
+            text-decoration: none;
+        }
+        
+        .logo-link:hover {
+            opacity: 0.9;
+        }
+
+        .logo-link img {
+            height: 52px; /* 配合文字微調高度 */
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 390px; /* 精確配對縮小後的長度 */
+        }
+
+        .logo-text h1 {
+            font-size: 19px; /* 中文名稱縮小一號 */
+            color: var(--primary-color);
+            letter-spacing: 0.8px; 
+            font-weight: 700;
+            line-height: 1.2;
+            white-space: nowrap;
+            margin: 0;
+            text-align: justify;
+            text-justify: inter-ideograph;
+        }
+        
+        .logo-text span {
+            display: block;
+            font-size: 10px; /* 英文等比例微調 */
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 0.05px; /* 精準調整英文間距，使其與中文寬度保持一致長度 */
+            margin-top: 4px;
+            line-height: 1.2;
+            white-space: nowrap;
+            text-align: justify;
+        }
+
+        /* 漢堡包選單按鈕 */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+            z-index: 1002;
+        }
+        .menu-toggle span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 3px;
+        }
+
+        .nav-item {
+            position: relative; 
+        }
+
+        .nav-menu .nav-link {
+            display: block;
+            padding: 8px 10px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+
+        .nav-menu .nav-link:hover, .nav-menu .nav-link.active {
+            color: var(--white);
+            background-color: var(--primary-color);
+            box-shadow: inset 0 -2px 0 var(--accent-color);
+        }
+
+        /* --- 廣告大圖輪播系統 --- */
+        .hero-carousel {
+            position: relative;
+            height: 520px;
+            overflow: hidden;
+            background-color: #000;
+            z-index: 1;
+        }
+
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            display: flex;
+            align-items: center;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+        }
+
+        .slide-1 { background-image: linear-gradient(rgba(15,30,54,0.75), rgba(15,30,54,0.5)), url('image/building.jpg?auto=format&fit=crop&w=1920&q=80'); }
+        .slide-2 { background-image: linear-gradient(rgba(15,30,54,0.75), rgba(15,30,54,0.5)), url('image/ev_battery_mould.jpg?auto=format&fit=crop&w=1920&q=80'); }
+        .slide-3 { background-image: linear-gradient(rgba(15,30,54,0.75), rgba(15,30,54,0.5)), url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1920&q=80'); }
+        .slide-4 { background-image: linear-gradient(rgba(15,30,54,0.75), rgba(15,30,54,0.5)), url('image/furniture.jpg?auto=format&fit=crop&w=1920&q=80'); }
+
+        .carousel-caption {
+            width: 80%;
+            max-width: 1200px;
+            margin: 0 auto;
+            color: var(--white);
+        }
+
+        .carousel-caption h2 {
+            font-size: 42px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            border-left: 5px solid var(--accent-color);
+            padding-left: 20px;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .carousel-caption p {
+            font-size: 18px;
+            color: rgba(255,255,255,0.85);
+            max-width: 700px;
+            padding-left: 25px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.1);
+            color: var(--white);
+            border: 1px solid rgba(255,255,255,0.2);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            transition: all 0.3s;
+        }
+        .carousel-btn:hover { background: var(--accent-color); color: var(--primary-color); }
+        .prev { left: 30px; }
+        .next { right: 30px; }
+
+        /* --- 核心獨立版塊切換邏輯 --- */
+        .page-section {
+            display: none;
+            padding: 80px 0;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .page-section.active-section {
+            display: block;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-header h3 {
+            font-size: 32px;
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .section-header::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+            margin: 0 auto;
+        }
+
+        /* --- 各版塊專屬內頁樣式 --- */
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .intro-text p {
+            margin-bottom: 20px;
+            color: var(--text-light);
+            text-align: justify;
+        }
+        .intro-highlight {
+            border-left: 4px solid var(--primary-color);
+            padding-left: 15px;
+            font-style: italic;
+            color: var(--text-dark) !important;
+            font-weight: 500;
+        }
+        .intro-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            background: var(--white);
+            padding: 30px;
+            border-radius: 4px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            border-top: 3px solid var(--accent-color);
+        }
+        .metric-item { text-align: center; }
+        .metric-item h4 { font-size: 28px; color: var(--primary-color); }
+
+        /* 產品網格通用結構 */
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            background: var(--white);
+            padding: 40px;
+            border-radius: 6px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+            align-items: center;
+        }
+        .product-detail h4 {
+            font-size: 24px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        .product-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .product-tags span {
+            background: #EBF1FA;
+            color: var(--primary-color);
+            padding: 6px 12px;
+            font-size: 13px;
+            font-weight: 500;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        /* ==========================================================================
+           🔋 鋰電新能源（純貿易商務定位文案，按鈕取消加粗）
+           ========================================================================== */
+        .interactive-tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+            margin-bottom: 5px;
+        }
+
+        .tab-trigger-btn {
+            background: #EBF1FA;
+            color: var(--primary-color);
+            padding: 12px 24px;
+            font-size: 15px;
+            font-weight: 400; /* 🌟 取消加粗，改為常規體 */
+            border-radius: 4px;
+            border: 1px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .tab-trigger-btn:hover {
+            background: #D2E1F7;
+            transform: translateY(-2px);
+        }
+
+        .tab-trigger-btn.btn-active {
+            background: var(--primary-color);
+            color: var(--white);
+            border-color: var(--accent-color);
+            box-shadow: 0 4px 12px rgba(15,30,54,0.2);
+        }
+
+        .expandable-panel-content {
+            display: none; 
+            grid-column: 1 / -1; 
+            background: #FDFDFD;
+            border: 1px solid #EAEAEA;
+            border-top: 3px solid var(--accent-color);
+            border-radius: 6px;
+            padding: 35px;
+            margin-top: 20px;
+            animation: slideDownFadeIn 0.4s ease forwards;
+        }
+
+        .expandable-panel-content.panel-active {
+            display: block;
+        }
+
+        /* 3張產品圖片網格 */
+        .panel-images-triple-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .panel-product-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 4px;
+            border: 1px solid rgba(0,0,0,0.06);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            background-color: #F0F2F5;
+            transition: transform 0.3s ease;
+        }
+        .panel-product-img:hover {
+            transform: scale(1.03);
+        }
+
+        /* 規格描述與表格排版 */
+        .panel-specification-text-box {
+            background: #F8F9FA;
+            border-left: 4px solid var(--primary-color);
+            padding: 20px;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .panel-specification-text-box h5 {
+            font-size: 18px;
+            color: var(--primary-color);
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .panel-specification-text-box p {
+            font-size: 14px;
+            color: var(--text-light);
+            line-height: 1.6;
+            text-align: justify;
+            margin-bottom: 20px;
+        }
+
+        /* 專業產品規格數據表 */
+        .spec-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: var(--white);
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .spec-table th, .spec-table td {
+            border: 1px solid #E5E5E5;
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        .spec-table th {
+            background-color: #EBF1FA;
+            color: var(--primary-color);
+            font-weight: 700;
+            width: 25%;
+        }
+
+        .spec-table td {
+            color: var(--text-dark);
+        }
+
+        @keyframes slideDownFadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* ========================================================================== */
+        
+        .section-img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            border-radius: 6px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border: 1px solid rgba(0,0,0,0.05);
+            background-color: #E9ECEF;
+        }
+
+        /* ==========================================================================
+           🌟 合併後的「核心優勢與戰略願景」版塊樣式
+           ========================================================================== */
+        .adv-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 45px;
+        }
+        .adv-card {
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: 4px;
+            transition: transform 0.3s;
+            border-bottom: 3px solid transparent;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        }
+        .adv-card:hover {
+            transform: translateY(-5px);
+            border-bottom-color: var(--accent-color);
+        }
+        .adv-card h4 { font-size: 20px; color: var(--primary-color); margin-bottom: 15px; }
+
+        .vision-box {
+            background: linear-gradient(135deg, var(--primary-color), #1A335B);
+            color: var(--white);
+            padding: 50px 60px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .vision-quote {
+            font-size: 24px;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        /* ========================================================================== */
+
+        /* --- 聯絡我們排版 --- */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 40px;
+        }
+        .contact-info-block {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 4px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        }
+        .office-divider {
+            margin: 30px 0;
+            border: 0;
+            border-top: 1px dashed rgba(197, 168, 128, 0.4);
+        }
+        .info-row {
+            margin-bottom: 20px;
+        }
+        .info-row:last-child {
+            margin-bottom: 0;
+        }
+        
+        .info-row .office-tag {
+            display: inline-block;
+            font-size: 11px;
+            text-transform: uppercase;
+            color: var(--white);
+            background-color: var(--accent-color);
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            margin-right: 5px;
+        }
+        .info-row .synergy-tag {
+            display: inline-block;
+            font-size: 11px;
+            color: var(--white);
+            background-color: #3A6073;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        
+        .info-row h4 {
+            font-size: 18px;
+            color: var(--primary-color);
+            margin-bottom: 6px;
+            font-weight: 700;
+        }
+        .info-row p { font-size: 15px; color: var(--text-dark); line-height: 1.5; }
+        .info-row .synergy-desc {
+            font-size: 13px;
+            color: var(--text-light);
+            background: #F4F6F9;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 8px;
+            border-left: 3px solid var(--accent-color);
+        }
+        
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #DDD;
+            border-radius: 4px;
+            background: var(--white);
+        }
+        .contact-form button {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 12px 30px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+            width: 100%;
+            border-radius: 4px;
+        }
+        .contact-form button:hover { background: var(--accent-color); color: var(--primary-color); }
+
+        /* ==========================================================================
+           🌟 徹底簡化的頁腳樣式（刪除所有重複的各公司詳細地址）
+           ========================================================================== */
+        footer {
+            background-color: var(--primary-color);
+            color: rgba(255,255,255,0.5);
+            padding: 30px 0;
+            font-size: 14px;
+            border-top: 4px solid var(--accent-color);
+            text-align: center;
+        }
+        .footer-brand {
+            color: var(--white);
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .footer-motto {
+            font-size: 12px;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 15px;
+            font-size: 13px;
+        }
+        /* ========================================================================== */
+
+        /* --- 流動端響應式修正 --- */
+        @media (max-width: 992px) {
+            .top-bar {
+                flex-direction: column;
+                gap: 5px;
+                text-align: center;
+                padding: 10px 5%;
+            }
+            .top-bar-info {
+                display: flex;
+                flex-direction: column;
+                gap: 3px;
+            }
+            .top-bar-info span { margin-right: 0; }
+
+            .logo-text { width: auto; max-width: 100%; }
+            .logo-text h1 { font-size: 15px; letter-spacing: 0.2px; text-align: left; }
+            .logo-text span { font-size: 7.5px; letter-spacing: 0px; text-align: left; }
+
+            .menu-toggle { display: flex; }
+
+            .nav-menu {
+                position: fixed;
+                top: 120px; 
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 120px);
+                background-color: var(--white);
+                flex-direction: column;
+                gap: 0;
+                transition: left 0.4s cubic-bezier(0.1, 0.9, 0.2, 1);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                overflow-y: auto;
+                padding-bottom: 40px;
+                z-index: 999;
+            }
+
+            .nav-menu.mobile-active { left: 0; }
+            .nav-menu .nav-item { width: 100%; border-bottom: 1px solid #EEE; }
+            .nav-menu .nav-link { padding: 16px 25px; font-size: 16px; border-radius: 0; width: 100%; }
+
+            .nav-menu .nav-link:hover, .nav-menu .nav-link.active {
+                background-color: var(--bg-light);
+                color: var(--primary-color);
+                box-shadow: inset 4px 0 0 var(--accent-color);
+            }
+
+            .menu-toggle.open span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+            .menu-toggle.open span:nth-child(2) { opacity: 0; }
+            .menu-toggle.open span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+
+            .hero-carousel { height: 380px; }
+            .carousel-caption h2 { font-size: 26px; line-height: 1.3; }
+            .carousel-caption p { font-size: 14px; padding-left: 20px; }
+            .carousel-btn { width: 35px; height: 35px; font-size: 16px; }
+            .prev { left: 10px; } .next { right: 10px; }
+
+            .intro-grid, .product-grid, .contact-wrapper {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+
+            .product-grid { display: flex; flex-direction: column-reverse; }
+            .intro-metrics { grid-template-columns: 1fr; gap: 15px; }
+            .adv-cards { grid-template-columns: 1fr; gap: 20px; }
+            .page-section { padding: 50px 0; }
+            .section-header h3 { font-size: 26px; }
+            .vision-box { padding: 35px 20px; }
+            .vision-quote { font-size: 18px; }
+            .contact-info-block { padding: 25px 20px; }
+
+            .panel-images-triple-grid { grid-template-columns: 1fr; gap: 12px; }
+            .panel-product-img { height: 160px; }
+            .spec-table th, .spec-table td { padding: 8px 10px; font-size: 12px; }
+            .spec-table th { width: 35%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div class="top-bar-info">
+            <span>📍 香港總部：上水新運路188號劍橋廣場1座1樓A11室</span>
+            <span>📍 東莞分公司：虎門鎮連升路虎門萬達廣場SOHO 2幢603室</span>
+        </div>
+        <div>全球貿易自由管道</div>
+    </div>
+
+    <header>
+        <div class="nav-container">
+            <a href="#home" class="logo-link" onclick="scrollToTop(); return false;">
+                <img src="logo.png" alt="Rhoba Group Logo">
+                <div class="logo-text">
+                    <h1>浩霸集團（香港）控股有限公司</h1>
+                    <span>RHOBA GROUP (HONG KONG) HOLDING COMPANY LIMITED</span>
+                </div>
+            </a>
+
+            <div class="menu-toggle" id="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <ul class="nav-menu" id="nav-menu-list">
+                <li class="nav-item"><a href="#home" class="nav-link active" onclick="scrollToTop(); return false;">首頁</a></li>
+                <li class="nav-item"><a href="#overview" class="nav-link" onclick="switchSection('overview')">集團概覽</a></li>
+                <li class="nav-item"><a href="#lithium" class="nav-link" onclick="switchSection('lithium')">鋰電新能源</a></li>
+                <li class="nav-item"><a href="#electronics" class="nav-link" onclick="switchSection('electronics')">前沿電子</a></li>
+                <li class="nav-item"><a href="#smart-home" class="nav-link" onclick="switchSection('smart-home')">智能家居</a></li>
+                <li class="nav-item"><a href="#supplychain" class="nav-link" onclick="switchSection('supplychain')">全球供應鏈</a></li>
+                <li class="nav-item"><a href="#vision" class="nav-link" onclick="switchSection('vision')">優勢與願景</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link" onclick="switchSection('contact')">聯絡我們</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="hero-carousel">
+        <div class="carousel-slide active slide-1">
+            <div class="carousel-caption">
+                <h2>雙城戰略聯動 協同共贏</h2>
+                <p>自2015年成立以來，浩霸集團依託香港自由港優勢與東莞前沿製造供應鏈，在對外貿易與新能源產業領域穩步跨越。</p>
+            </div>
+        </div>
+        <div class="carousel-slide slide-2">
+            <div class="carousel-caption">
+                <h2>前瞻性綠色清潔能源</h2>
+                <p>緊跟全球可持續發展趨勢，中港兩地團隊高效整合，將高品質鋰電池廣泛應用於新能源汽車及儲能系統，贏得全球信賴。</p>
+            </div>
+        </div>
+        <div class="carousel-slide slide-3">
+            <div class="carousel-caption">
+                <h2>前沿電子 · 競逐數智未來</h2>
+                <p>緊跟科技發展前沿，高效對接全球頂尖採購鏈，提供從智慧智慧終端外設到高精尖工業級電子元器件的立體化供應體系。</p>
+            </div>
+        </div>
+        <div class="carousel-slide slide-4">
+            <div class="carousel-caption">
+                <h2>智能家居 · 人本科技美學</h2>
+                <p>從全屋智能互聯生態、人體工學辦公體系到綠色環保家居陳設，我們精準把握全球前沿趨勢，提供卓越的商品與定制工程解決方案。</p>
+            </div>
+        </div>
+        <button class="carousel-btn prev" onclick="moveSlide(-1)">&#10094;</button>
+        <button class="carousel-btn next" onclick="moveSlide(1)">&#10095;</button>
+    </div>
+
+    <section id="overview-section" class="page-section">
+        <div class="container">
+            <div class="section-header">
+                <h3>集團概覽</h3>
+            </div>
+            <div class="intro-grid">
+                <div class="intro-text">
+                    <p class="intro-highlight">“海外盛譽 · 崇尚完美 · 雙城聯動”</p>
+                    <p>浩霸集團（香港）控股有限公司成立於2015年，是一家在對外貿易領域嶄露頭角的跨國型企業。公司憑藉多元化的業務經營和高度專業的服務理念，在日新月異的國際市場中穩步前行。</p>
+                    <p><strong>【中港兩地一體化戰略】</strong> 浩霸控股深耕進出口貿易，將<strong>香港總部</strong>的「自由貿易港窗口、國際離岸金融、全球客戶網絡」優勢，與內地分公司<strong>東莞浩霸新能源科技有限公司</strong>的「大灣區核心產業鏈、高端技術人才、現代化敏捷供應鏈」深度融合，構築了高效、靈活且極具抗風險能力的跨境協同閉環，致力於為全世界客戶提供物美價廉的商品與高效服務。</p>
+                </div>
+                <div class="intro-metrics">
+                    <div class="metric-item">
+                        <h4>中港</h4>
+                        <p>雙中心協同網絡</p>
+                    </div>
+                    <div class="metric-item">
+                        <h4>多元</h4>
+                        <p>跨界支柱產業</p>
+                    </div>
+                    <div class="metric-item">
+                        <h4>全球</h4>
+                        <p>貿易覆蓋網絡</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="lithium-section" class="page-section">
+        <div class="container">
+            <div class="section-header">
+                <h3>鋰電新能源</h3>
+            </div>
+            <div class="product-grid" style="display: block;"> 
+                <div class="product-detail" style="margin-bottom: 25px;">
+                    <h4>中港協同 綠色能源國際貿易樞紐</h4>
+                    <p>公司專注於車載、工業及高端工具類高安全性能電芯與系統模組的**全球進出口貿易與大宗採購分銷**。依託東莞新能源基地強大的大灣區優質供應鏈遴選、國際合規准入測試與敏捷倉儲能力，疊加香港總部的國際貿易窗口、自由港結算與多式聯運物流網絡，為全球新能源汽車及高功率工業設備客戶提供優質、安全、合規的綠色動力核心解決方案。</p>
+                    <p style="margin-top: 15px; font-weight: bold; color: var(--primary-color);">💡 產品圖片與核心規格描述：</p>
+                    
+                    <div class="interactive-tags-container">
+                        <button class="tab-trigger-btn btn-active" onclick="toggleProductPanel('density')">🔋 高能量密度電芯系列</button>
+                        <button class="tab-trigger-btn" onclick="toggleProductPanel('module')">🔋 乘用車電池系統模組系列</button>
+                        <button class="tab-trigger-btn" onclick="toggleProductPanel('powertools')">🔋 電動工具高性能電芯系列</button>
+                    </div>
+                </div>
+
+                <div id="panel-density" class="expandable-panel-content panel-active">
+                    <div class="panel-images-triple-grid">
+                        <img src="product/cell_1.jpg" alt="高能量密度電芯 - 包裝品控外觀" class="panel-product-img">
+                        <img src="product/cell_2.jpg" alt="高能量密度電芯 - 出廠規格檢驗" class="panel-product-img">
+                        <img src="product/cell_3.jpg" alt="高能量密度電芯 - 出口物流托盤" class="panel-product-img">
+                    </div>
+                    <div class="panel-specification-text-box">
+                        <h5>📋 產品商務技術規格與重要數據表</h5>
+                        <p><strong>【貿易產品概述】</strong> 本系列電芯專為乘用車及超長續航車型客戶定向採購。浩霸貿易團隊嚴格甄選大灣區頭部大廠的高鎳三元正極與硅碳負極體系優質貨源，單體能量密度突破 280 Wh/kg。所有批次產品在東莞品控中心均通過嚴格的第三方機構極限安全准入驗證。依託香港總部便捷的外貿窗口進行跨國結算與合規分銷，已成功對接多個歐洲及東南亞新能源車企採購鏈。</p>
+                        
+                        <table class="spec-table">
+                            <tr><th>產品名稱</th><td>高端高能量密度三元鋰離子電芯 (High-Energy Cell)</td></tr>
+                            <tr><th>尺寸規格</th><td>直徑 46mm × 高度 80mm (软包电芯)</td></tr>
+                            <tr><th>額定電壓</th><td>3.7 V</td></tr>
+                            <tr><th>額定容量</th><td>25 Ah</td></tr>
+                            <tr><th>產地/品控</th><td>中國廣東東莞（東莞品控中心嚴格篩選與國際准入測試）</td></tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="panel-module" class="expandable-panel-content">
+                    <div class="panel-images-triple-grid">
+                        <img src="product/module_1.jpg" alt="乘用車電池系統模組 - 成品結構" class="panel-product-img">
+                        <img src="product/module_2.jpg" alt="乘用車電池系統模組 - 外觀檢驗" class="panel-product-img">
+                        <img src="product/module_3.jpg" alt="乘用車電池系統模組 - 出口防護包裝" class="panel-product-img">
+                    </div>
+                    <div class="panel-specification-text-box">
+                        <h5>📋 產品商務技術規格與重要數據表</h5>
+                        <p><strong>【貿易產品概述】</strong> 浩霸全球供應鏈精選的高結構集成化模組，採用高強度輕量化鋁合金外殼及 CTP（Cell to Pack）一體化架構，空間利用率提升 15%。產品配備高敏度 BMS 智能採集系統，具備高阻燃、防爆設計，全面符合國際 ECE R100 安全准入規範。東莞團隊負責海外客戶定制化（OEM/ODM）規格對接與全鏈路品控，通過香港全球網絡無縫對接海外車企與 Tier 1 國際採購商。</p>
+                        
+                        <table class="spec-table">
+                            <tr><th>產品名稱</th><td>輕量化一體式乘用車動力電池模組 (EV Battery Module)</td></tr>
+                            <tr><th>尺寸規格</th><td>長 580mm × 寬 350mm × 高 115mm (國際商務定制外殼)</td></tr>
+                            <tr><th>額定電壓</th><td>44.4 V</td></tr>
+                            <tr><th>額定容量</th><td>150 Ah</td></tr>
+                            <tr><th>產地/品控</th><td>中國廣東東莞（大灣區優質製造鏈整合與供應鏈集成）</td></tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="panel-powertools" class="expandable-panel-content">
+                    <div class="panel-images-triple-grid">
+                        <img src="product/powertool_1.jpg" alt="電動工具高性能電芯 - 優質現貨" class="panel-product-img">
+                        <img src="product/powertool_2.jpg" alt="電動工具高性能電芯 - 出口標籤粘貼" class="panel-product-img">
+                        <img src="product/powertool_3.jpg" alt="電動工具高性能電芯 - 出貨前抽檢" class="panel-product-img">
+                    </div>
+                    <div class="panel-specification-text-box">
+                        <h5>📋 產品商務技術規格與重要數據表</h5>
+                        <p><strong>【貿易產品概述】</strong> 本系列商品專為滿足海外高端工業電動工具、園林機械及清潔設備採購商對高倍率放電的極端需求而導入。支持 15C 至 30C 持續高倍率大電流放電，極低內阻設計能有效抑制放電發熱。經東莞商務基地對每批次產品進行抗震、跌落與極限超載安全閉環復檢，確保海外出貨品質。依託香港自由港獨特的跨國清關與多式聯運優勢，高效分銷至全球五金與工業工具供應鏈體系中。</p>
+                        
+                        <table class="spec-table">
+                            <tr><th>產品名稱</th><td>高倍率工業級電動工具圓柱電芯 (High-Rate Power Cell)</td></tr>
+                            <tr><th>尺寸規格</th><td>直徑 21mm × 高度 70mm (標準21700高倍率貿易系列)</td></tr>
+                            <tr><th>額定電壓</th><td>3.6 V</td></tr>
+                            <tr><th>額定容量</th><td>5.0 Ah (5000mAh)</td></tr>
+                            <tr><th>產地/品控</th><td>中國廣東東莞（大灣區大廠供應，經東莞基地品控並由香港自由港出口）</td></tr>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="electronics-section" class="page-section">
+        <div class="container">
+            <div class="section-header">
+                <h3>前沿電子板塊</h3>
+            </div>
+            <div class="product-grid">
+                <div class="product-detail">
+                    <h4>科技前沿 競逐未來</h4>
+                    <p>電子產品是公司的經營重點。浩霸控股整合大灣區電子核心集群，建立快速響應的柔性供應鏈，配合香港總部成熟的外貿對接體系，確保產品在國際市場上具備高度競爭力。</p>
+                    <div class="product-tags">
+                        <span>智慧手機配件</span>
+                        <span>電腦周邊設備</span>
+                        <span>高精尖工業電子元件</span>
+                    </div>
+                </div>
+                <img src="image/electronics_display.jpg" alt="電子產品板塊展示" class="section-img">
+            </div>
+        </div>
+    </section>
+
+    <section id="smart-home-section" class="page-section">
+        <div class="container">
+            <div class="section-header">
+                <h3>智能家居業務</h3>
+            </div>
+            <div class="product-grid">
+                <div class="product-detail">
+                    <h4>智聯生活 人本美學</h4>
+                    <p>智能家居是浩霸集團產品線全球升級的核心體現。公司憑藉對全球數智化空間美學與生活需求的精準把握，通過香港全球渠道網絡，將融入 AIoT 互聯、人體工學與綠色低碳技術的智能家居方案推向全球市場。</p>
+                    <div class="product-tags">
+                        <span>全屋智能互聯生態系統</span>
+                        <span>人體工學敏捷辦公家具</span>
+                        <span>高端綠色智能工程定制</span>
+                    </div>
+                </div>
+                <img src="image/furniture_display.jpg" alt="智能家居展示" class="section-img">
+            </div>
+        </div>
+    </section>
+
+    <section id="supplychain-section" class="page-section">
+        <div class="container">
+            <div class="section-header">
+                <h3>全球供應鏈與貿易網絡</h3>
+            </div>
+            <div class="product-grid">
+                <div class="product-detail">
+                    <h4>互聯全球 靈活高效</h4>
+                    <p>浩霸控股中港兩地團隊高度一體化運作。公司憑藉專業的外貿經理人隊伍，熟悉跨區域、極具複雜度的國際貿易規則，立足大灣區強大製造腹地，在全球建立起高度穩定且深受信賴的採購供應鏈與銷售網絡。</p>
+                    <div class="product-tags">
+                        <span>香港自由貿易主渠道</span>
+                        <span>海外客戶關係網絡</span>
+                        <span>國際多式進出口對接</span>
+                    </div>
+                </div>
+                <img src="image/supplychain_map.jpg" alt="全球供應鏈與貿易網絡地圖" class="section-img">
+            </div>
+        </div>
+    </section>
+
+    <section id="vision-section" class="page-section">
+        <div class="container">
+            <div class="section-header">
+                <h3>核心優勢與戰略願景</h3>
+            </div>
+            
+            <div class="adv-cards">
+                <div class="adv-card">
+                    <h4>中港雙中心協同</h4>
+                    <p>完美融合香港國際化貿易窗口與東莞優勢產業集群，實現「海外商務+內地供應鏈」的高效閉環。</p>
+                </div>
+                <div class="adv-card">
+                    <h4>跨產業多元貿易</h4>
+                    <p>傳統大宗商品與前沿綠色新能源產品齊頭並進，具備極強的抗風險能力與市場風口捕捉力。</p>
+                </div>
+                <div class="adv-card">
+                    <h4>穩固的全球渠道</h4>
+                    <p>立足香港自由貿易港口，建立了廣泛而穩定的海外客戶網絡，跨境清關與多式聯運流暢高效。</p>
+                </div>
+            </div>
+
+            <div class="vision-box">
+                <p class="vision-quote">“依託大灣區，建設有市場競爭力與行業影響力的國際化知名貿易企業”</p>
+                <p>浩霸控股將始終以穩定的發展態勢，發揮香港自由貿易主渠道作用。我們堅持中港兩地深度協同，持續優化全球供應鏈網絡，朝著國際化標桿企業邁進，誓為全球客戶提供更優質、最具市場競爭力的商品與最高效的跨境商務服務。</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact-section" class="page-section">
+        <div class="container">
+            <div class="section-header">
+                <h3>中港雙中心協同網絡</h3>
+            </div>
+            <div class="contact-wrapper">
+                <div class="contact-info-block">
+                    <div class="info-row">
+                        <div>
+                            <span class="office-tag">HONG KONG HQ / 香港總部</span>
+                            <span class="synergy-tag">全球窗口 · 自由貿易管道</span>
+                        </div>
+                        <h4>浩霸集團（香港）控股有限公司</h4>
+                        <p><strong>公司地址：</strong>香港上水新運路188號劍橋廣場1座1樓A11室</p>
+                        <p style="margin-top: 5px;"><strong>聯絡電話：</strong>+852-2660 9955</p>
+                        <p class="synergy-desc">🌐 <strong>協同職能：</strong>集團全球戰略決策中心、海外商務對接與清關離岸管道、國際金融融資結算中心。</p>
+                    </div>
+                    
+                    <hr class="office-divider">
+                    
+                    <div class="info-row">
+                        <div>
+                            <span class="office-tag">DONGGUAN OFFICE / 東莞分公司</span>
+                            <span class="synergy-tag">技術前沿 · 內地供應鏈樞紐</span>
+                        </div>
+                        <h4>東莞浩霸新能源科技有限公司</h4>
+                        <p><strong>公司地址：</strong>廣東省東莞市虎門鎮連升路虎門萬達廣場SOHO 2幢603室</p>
+                        <p style="margin-top: 5px;"><strong>內地商務熱線：</strong>+86 0769 12345678</p>
+                        <p class="synergy-desc">⚡ <strong>協同職能：</strong>新能源儲能與動力電池技術品控中心、大灣區敏捷製造供應鏈網絡集成樞紐。</p>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form onsubmit="event.preventDefault(); alert('感謝您的聯絡，我們的中港跨區域商務經理將盡快回覆您！');">
+                        <input type="text" placeholder="閣下姓名" required>
+                        <input type="email" placeholder="電子郵箱" required>
+                        <input type="text" placeholder="探討之業務領域（如：鋰電、電子、智能家居、供應鏈等）">
+                        <textarea rows="5" placeholder="請輸入您的具體合作意向與洽談內容..." required></textarea>
+                        <button type="submit">提交商務洽談</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-brand">浩霸集團（香港）控股有限公司</div>
+            <div class="footer-motto">RHOBA GROUP (HONG KONG) HOLDING COMPANY LIMITED &nbsp;|&nbsp; 品質方針：海外盛譽 · 崇尚完美 · 中港協同</div>
+            <div class="footer-bottom">
+                &copy; 2026 RHOBA GROUP. All Rights Reserved. 版權所有。
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- 📲 流動端導航控制邏輯 ---
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const navMenuList = document.getElementById('nav-menu-list');
+
+        function toggleMobileMenu() {
+            mobileMenuBtn.classList.toggle('open');
+            navMenuList.classList.toggle('mobile-active');
+        }
+
+        function closeMobileMenu() {
+            mobileMenuBtn.classList.remove('open');
+            navMenuList.classList.remove('mobile-active');
+        }
+
+        // --- 🔋 鋰電新能源（動力電池）：控制產品類別面板切換邏輯 ---
+        function toggleProductPanel(panelId) {
+            const panels = document.querySelectorAll('.expandable-panel-content');
+            panels.forEach(panel => panel.classList.remove('panel-active'));
+
+            const targetPanel = document.getElementById('panel-' + panelId);
+            if (targetPanel) {
+                targetPanel.classList.add('panel-active');
+            }
+
+            const buttons = document.querySelectorAll('.tab-trigger-btn');
+            buttons.forEach(btn => btn.classList.remove('btn-active'));
+
+            event.currentTarget.classList.add('btn-active');
+        }
+
+        // --- 獨立版塊切換與導航條動態選單聯動 ---
+        function switchSection(sectionId, avoidScroll) {
+            const sections = document.querySelectorAll('.page-section');
+            sections.forEach(sec => sec.classList.remove('active-section'));
+            
+            // 如果點擊的是首頁，展示集團概覽做為主視覺內容，或按需求切換
+            const realSectionId = (sectionId === 'home') ? 'overview' : sectionId;
+            const targetSection = document.getElementById(realSectionId + '-section');
+            if (targetSection) {
+                targetSection.classList.add('active-section');
+            }
+
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => link.classList.remove('active'));
+            
+            const activeLink = document.querySelector(`a[href="#${sectionId}"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+
+            closeMobileMenu();
+
+            // 智能滾動定位邏輯
+            if (!avoidScroll && targetSection) {
+                window.scrollTo({
+                    top: document.querySelector('.hero-carousel').offsetHeight,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        function scrollToTop() {
+            switchSection('home', true);
+            const overviewSection = document.getElementById('overview-section');
+            if (overviewSection) {
+                overviewSection.classList.add('active-section');
+            }
+            closeMobileMenu();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // --- 廣告大圖輪播系統邏輯 ---
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+
+        function showSlide(index) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (index + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        function moveSlide(step) {
+            showSlide(currentSlide + step);
+        }
+
+        // 自動輪播（每5秒切換）
+        setInterval(() => {
+            moveSlide(1);
+        }, 5000);
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const hash = window.location.hash.replace('#', '');
+            if (hash) {
+                if(hash === 'home' || hash === ''){
+                    scrollToTop();
+                } else if(hash.startsWith('lithium-') || hash === 'lithium'){
+                    switchSection('lithium');
+                } else if(hash === 'advantages' || hash === 'vision'){
+                    switchSection('vision');
+                } else {
+                    switchSection(hash);
+                }
+            } else {
+                // 預設首頁狀態
+                scrollToTop();
+            }
+        });
+    </script>
+</body>
+</html>
