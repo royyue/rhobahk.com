@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>东莞浩霸新能源科技有限公司 | RHOBA NEW ENERGY TECHNOLOGY | 动力电池 | 梯次模组 | 电池黑粉 | 大宗贸易</title>
+    
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <style>
+        /* --- 核心品牌变量与基础重置 --- */
+        :root {
+            --primary-color: #0F1E36;    /* 深邃墨蓝 */
+            --accent-color: #C5A880;     /* 精英香槟金 */
+            --text-dark: #2B2B2B;        /* 质感深灰 */
+            --text-light: #666666;       /* 次要文本 */
+            --bg-light: #F8F9FA;         /* 浅灰背景 */
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, "Microsoft YaHei";
+        }
+
+        body {
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+            -webkit-tap-highlight-color: transparent; 
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* --- ⚡ 超强效中英文深度隔离机制（彻底解决并存与干扰） --- */
+        /* 默认状态（中文）：显示中文，绝对隐藏英文 */
+        [lang-context="zh"] { display: block !important; }
+        [lang-context="en"] { display: none !important; }
+        
+        /* 独立处理行内文本/跨度标签 */
+        span[lang-context="zh"], th[lang-context="zh"], td[lang-context="zh"], a[lang-context="zh"] { display: inline-block !important; }
+        span[lang-context="en"], th[lang-context="en"], td[lang-context="en"], a[lang-context="en"] { display: none !important; }
+
+        /* 激活英文状态（body 带有 .lang-en 类）：绝对隐藏中文，显示英文 */
+        body.lang-en [lang-context="zh"] { display: none !important; }
+        body.lang-en [lang-context="en"] { display: block !important; }
+        
+        body.lang-en span[lang-context="zh"], body.lang-en th[lang-context="zh"], body.lang-en td[lang-context="zh"], body.lang-en a[lang-context="zh"] { display: none !important; }
+        body.lang-en span[lang-context="en"], body.lang-en th[lang-context="en"], body.lang-en td[lang-context="en"], body.lang-en a[lang-context="en"] { display: inline-block !important; }
+
+        /* 语言切换按钮样式 */
+        .lang-switch-btn {
+            background: transparent;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 4px 10px;
+            font-size: 13px;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            margin-left: 10px;
+        }
+        .lang-switch-btn:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        /* --- 顶部联络信息条 --- */
+        .top-bar {
+            background-color: #0a1424;
+            color: rgba(255,255,255,0.7);
+            font-size: 13px;
+            padding: 8px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(197, 168, 128, 0.2);
+        }
+        .top-bar-info { display: flex; align-items: center; }
+
+        /* --- 主导航栏架构 --- */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            width: 90%;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            position: relative;
+        }
+
+        /* 左上角公司名称 */
+        .logo-link {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+            z-index: 1002;
+            user-select: none;
+            width: 520px;
+            max-width: 65%;
+        }
+        
+        .logo-link:hover { opacity: 0.9; }
+        .logo-link img { height: 48px; width: auto; object-fit: contain; flex-shrink: 0; }
+        .logo-text { display: flex; flex-direction: column; justify-content: center; width: 100%; }
+        .logo-text h1 { font-size: 18px; color: var(--primary-color); font-weight: 700; line-height: 1.2; letter-spacing: 0.5px; }
+        
+        .logo-text span.en-sub {
+            display: block;
+            font-size: 11px;
+            color: var(--accent-color);
+            font-weight: 600;
+            letter-spacing: -0.1px;
+            margin-top: 4px;
+            line-height: 1.2;
+            text-align: justify;
+            text-justify: inter-character;
+        }
+
+        /* 移动端菜单按钮 */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+            z-index: 1002;
+        }
+        .menu-toggle span { display: block; width: 100%; height: 3px; background-color: var(--primary-color); border-radius: 2px; transition: all 0.3s ease; }
+
+        .nav-menu { display: flex; list-style: none; gap: 2px; align-items: center; }
+        .nav-item { position: relative; }
+        .nav-menu .nav-link {
+            display: block;
+            padding: 8px 10px;
+            font-size: 14px;
+            font-weight: 400; 
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+
+        .nav-menu .nav-link:hover, .nav-menu .nav-link.active {
+            color: var(--white);
+            background-color: var(--primary-color);
+            box-shadow: inset 0 -2px 0 var(--accent-color);
+        }
+
+        /* --- 广告大图轮播系统 --- */
+        .hero-carousel { position: relative; height: 520px; overflow: hidden; background-color: #000; z-index: 1; }
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            display: flex;
+            align-items: center;
+            background-size: cover;
+            background-position: center;
+        }
+        .carousel-slide.active { opacity: 1; }
+
+        .slide-1 { background-image: linear-gradient(rgba(15,30,54,0.75), rgba(15,30,54,0.5)), url('image/building.jpg'); }
+        .slide-2 { background-image: linear-gradient(rgba(15,30,54,0.75), rgba(15,30,54,0.5)), url('image/ev_battery_mould.jpg'); }
+        .slide-3 { background-image: linear-gradient(rgba(15,30,54,0.75), rgba(15,30,54,0.5)), url('image/electronics_bg.jpg'); }
+        .slide-4 { background-image: linear-gradient(rgba(15,30,54,0.75), rgba(15,30,54,0.5)), url('image/furniture.jpg'); }
+
+        .carousel-caption { width: 80%; max-width: 1200px; margin: 0 auto; color: var(--white); }
+        .carousel-caption h2 { font-size: 42px; font-weight: 600; margin-bottom: 15px; border-left: 5px solid var(--accent-color); padding-left: 20px; animation: fadeInUp 0.8s ease; }
+        .carousel-caption p { font-size: 18px; color: rgba(255,255,255,0.85); max-width: 700px; padding-left: 25px; animation: fadeInUp 1s ease; }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.1);
+            color: var(--white);
+            border: 1px solid rgba(255,255,255,0.2);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            transition: all 0.3s;
+        }
+        .carousel-btn:hover { background: var(--accent-color); color: var(--primary-color); }
+        .prev { left: 30px; } .next { right: 30px; }
+
+        /* --- 版块切换与通用布局 --- */
+        .page-section { display: none; padding: 80px 0; animation: fadeIn 0.5s ease; }
+        .page-section.active-section { display: block; }
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+        
+        .section-header { text-align: center; margin-bottom: 50px; position: relative; }
+        .section-header h3 { font-size: 32px; color: var(--primary-color); font-weight: 700; margin-bottom: 10px; }
+        .section-header::after { content: ''; display: block; width: 50px; height: 3px; background-color: var(--accent-color); margin: 0 auto; }
+
+        .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+        .intro-text p { margin-bottom: 20px; color: var(--text-light); text-align: initial; }
+        .intro-highlight { border-left: 4px solid var(--primary-color); padding-left: 15px; font-style: italic; color: var(--text-dark) !important; font-weight: 500; }
+        .intro-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; background: var(--white); padding: 30px; border-radius: 4px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); border-top: 3px solid var(--accent-color); }
+        .metric-item { text-align: center; }
+        .metric-item h4 { font-size: 28px; color: var(--primary-color); }
+
+        .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; background: var(--white); padding: 40px; border-radius: 6px; box-shadow: 0 10px 30px rgba(0,0,0,0.02); align-items: center; }
+        .product-detail h4 { font-size: 24px; color: var(--primary-color); margin-bottom: 15px; }
+        
+        .product-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+        .product-tags span { background: #EBF1FA; color: var(--primary-color); padding: 6px 12px; font-size: 13px; font-weight: 400; border-radius: 4px; display: inline-block; }
+        .section-img { width: 100%; height: 320px; object-fit: cover; border-radius: 6px; box-shadow: 0 5px 15px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.05); background-color: #E9ECEF; }
+
+        /* --- 锂电版块参数表特定防错样式 --- */
+        .spec-table { width: 100%; border-collapse: collapse; font-size: 13px; table-layout: fixed; }
+        .spec-table tr { border-bottom: 1px solid #F1F3F5; }
+        .spec-table tr:last-child { border-bottom: none; }
+        .spec-table td { padding: 8px 0; color: var(--text-dark); word-break: break-word; vertical-align: top; }
+        .spec-table td.label { color: var(--text-light); width: 42%; padding-right: 10px; font-weight: 500; }
+
+        .lithium-header-desc { background: var(--white); padding: 30px; border-radius: 6px; border-left: 4px solid var(--accent-color); margin-bottom: 40px; box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
+        .lithium-header-desc p { color: var(--text-light); font-size: 15px; text-align: initial; margin-top: 10px; }
+
+        /* 30款产品大矩阵平铺布局 */
+        .products-showcase-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
+        .product-spec-card { background: var(--white); border-radius: 6px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.05); transition: transform 0.3s ease; }
+        .product-spec-card:hover { transform: translateY(-5px); }
+        .product-spec-card img { width: 100%; height: 190px; object-fit: cover; background-color: #F1F3F5; border-bottom: 1px solid rgba(0,0,0,0.05); }
+        
+        .card-body { padding: 20px; }
+        .card-body h5 {
+            font-size: 15px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-weight: 600;
+            height: 22px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            border-left: 3px solid var(--accent-color);
+            padding-left: 8px;
+        }
+
+        /* --- 优势与愿景样式 --- */
+        .adv-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .adv-card { background: var(--white); padding: 40px 30px; border-radius: 4px; transition: transform 0.3s; border-bottom: 3px solid transparent; box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
+        .adv-card:hover { transform: translateY(-5px); border-bottom-color: var(--accent-color); }
+        .adv-card h4 { font-size: 20px; color: var(--primary-color); margin-bottom: 15px; font-weight: 600; }
+        .adv-card p { font-size: 14px; color: var(--text-light); text-align: initial; }
+
+        .vision-box { background: linear-gradient(135deg, var(--primary-color), #1A335B); color: var(--white); padding: 60px; border-radius: 8px; text-align: center; }
+        .vision-quote { font-size: 24px; color: var(--accent-color); margin-bottom: 25px; font-weight: 500; }
+
+        /* --- 联系我们与表单 --- */
+        .contact-wrapper { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; }
+        .contact-info-block { background: var(--white); padding: 40px; border-radius: 4px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
+        .info-row { margin-bottom: 20px; }
+        .info-row:last-child { margin-bottom: 0; }
+        .info-row label { display: inline-block; font-size: 11px; text-transform: uppercase; color: var(--white); background-color: var(--accent-color); padding: 2px 8px; border-radius: 3px; font-weight: bold; margin-bottom: 8px; }
+        .info-row h4 { font-size: 18px; color: var(--primary-color); margin-bottom: 6px; font-weight: 700; }
+        .info-row p { font-size: 15px; color: var(--text-dark); line-height: 1.5; }
+        
+        .contact-form input, .contact-form textarea { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #DDD; border-radius: 4px; background: var(--white); }
+        .contact-form button { background: var(--primary-color); color: var(--white); padding: 12px 30px; border: none; cursor: pointer; font-weight: bold; transition: background 0.3s; width: 100%; border-radius: 4px; }
+        .contact-form button:hover { background: var(--accent-color); color: var(--primary-color); }
+
+        /* --- 👑 优化后的全新现代化页脚样式区 --- */
+        footer {
+            background-color: #0A1424; /* 比主色调更深邃的商务底色 */
+            color: rgba(255, 255, 255, 0.65);
+            padding: 50px 0 30px 0;
+            font-size: 14px;
+            border-top: 4px solid var(--accent-color); /* 精英香槟金顶部线条 */
+            text-align: initial; /* 重置整体对齐为合理布局 */
+        }
+
+        .footer-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* 1. 页脚上部：品牌称谓与快捷联系 */
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 25px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        .footer-brand h4 {
+            color: var(--white);
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        .footer-brand p {
+            color: var(--accent-color);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-top: 3px;
+        }
+
+        .footer-contact-info {
+            text-align: right;
+        }
+        .footer-contact-info span {
+            font-size: 12px;
+            text-transform: uppercase;
+            display: block;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 2px;
+        }
+        .footer-email-link {
+            color: var(--white);
+            font-size: 16px;
+            font-weight: 500;
+            text-decoration: underline;
+            transition: color 0.3s ease;
+        }
+        .footer-email-link:hover {
+            color: var(--accent-color);
+        }
+
+        /* 2. 页脚中部：微型快捷导航 */
+        .footer-middleware {
+            padding: 20px 0;
+            display: flex;
+            justify-content: center;
+        }
+        .footer-nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+        .footer-nav-links a {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 13px;
+            transition: color 0.3s ease;
+        }
+        .footer-nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* 3. 页脚下部：版权与官方法规备案 */
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            letter-spacing: 0.3px;
+            margin-top: 0 !important; /* 覆写旧样式影响 */
+        }
+        
+        .icp-link {
+            color: rgba(255, 255, 255, 0.4);
+            margin-left: 15px;
+            text-decoration: none;
+            display: inline-block;
+            transition: color 0.3s ease;
+        }
+        .icp-link:hover {
+            color: var(--accent-color);
+        }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* --- 响应式适配 --- */
+        @media (max-width: 992px) {
+            .top-bar { flex-direction: column; gap: 5px; text-align: center; padding: 10px 5%; }
+            .top-bar-info { display: flex; flex-direction: column; gap: 3px; }
+
+            .menu-toggle { display: flex; }
+
+            .nav-menu {
+                position: fixed;
+                top: 110px; 
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 110px);
+                background-color: var(--white);
+                flex-direction: column;
+                gap: 0;
+                transition: left 0.4s cubic-bezier(0.1, 0.9, 0.2, 1);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                overflow-y: auto;
+                padding-bottom: 40px;
+                z-index: 999;
+                align-items: flex-start;
+            }
+
+            .nav-menu.mobile-active { left: 0; }
+            .nav-menu .nav-item { width: 100%; border-bottom: 1px solid #EEE; }
+            .nav-menu .nav-link { padding: 16px 25px; font-size: 16px; border-radius: 0; width: 100%; }
+            .nav-menu .nav-link:hover, .nav-menu .nav-link.active { background-color: var(--bg-light); color: var(--primary-color); box-shadow: inset 4px 0 0 var(--accent-color); }
+
+            .lang-switch-btn { margin: 15px 25px; }
+
+            .hero-carousel { height: 380px; }
+            .carousel-caption h2 { font-size: 24px; line-height: 1.3; }
+            .carousel-caption p { font-size: 14px; padding-left: 20px; }
+            .carousel-btn { width: 35px; height: 35px; font-size: 16px; }
+            .prev { left: 10px; } .next { right: 10px; }
+
+            .intro-grid, .product-grid, .contact-wrapper { grid-template-columns: 1fr; gap: 30px; padding: 20px; }
+            .product-grid { display: flex; flex-direction: column-reverse; }
+
+            .products-showcase-grid { grid-template-columns: 1fr; gap: 20px; }
+            .intro-metrics, .adv-cards { grid-template-columns: 1fr; gap: 15px; }
+            .page-section { padding: 50px 0; }
+            .section-header h3 { font-size: 26px; }
+            .vision-box { padding: 35px 20px; }
+            .contact-info-block { padding: 25px 20px; }
+            .logo-link { max-width: 80%; }
+
+            /* 📱 页脚移动端响应式微调 */
+            footer { padding: 40px 0 25px 0; }
+            .footer-top { flex-direction: column; text-align: center; gap: 15px; padding-bottom: 20px; }
+            .footer-contact-info { text-align: center; }
+            .footer-nav-links { flex-wrap: wrap; justify-content: center; gap: 12px 18px; }
+            .footer-bottom { line-height: 1.8; }
+            .icp-link { display: block; margin-left: 0; margin-top: 5px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div class="top-bar-info" lang-context="zh">
+            <span>📍 业务基地：东莞虎门镇虎门万达广场SOHO 2栋603室</span>
+        </div>
+        <div lang-context="zh">新能源国际大宗贸易通路</div>
+
+        <div class="top-bar-info" lang-context="en">
+            <span>📍 Business Base: Room 603, Bldg SOHO 2, Humen Wanda Plaza, Humen, Dongguan</span>
+        </div>
+        <div lang-context="en">New Energy Commodity Global Channel</div>
+    </div>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo-link" onclick="scrollToTop()">
+                <img src="logo.png" alt="Logo">
+                <div class="logo-text">
+                    <h1>东莞浩霸新能源科技有限公司</h1>
+                    <span class="en-sub">RHOBA NEW ENERGY TECHNOLOGY CO., LTD.</span>
+                </div>
+            </div>
+
+            <div class="menu-toggle" id="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <ul class="nav-menu" id="nav-menu-list">
+                <li class="nav-item" lang-context="zh"><a href="#overview" class="nav-link active" onclick="switchSection('overview')">公司概览</a></li>
+                <li class="nav-item" lang-context="zh"><a href="#lithium" class="nav-link" onclick="switchSection('lithium')">锂电新能源</a></li>
+                <li class="nav-item" lang-context="zh"><a href="#electronics" class="nav-link" onclick="switchSection('electronics')">前沿电子</a></li>
+                <li class="nav-item" lang-context="zh"><a href="#furniture" class="nav-link" onclick="switchSection('furniture')">智能家居</a></li>
+                <li class="nav-item" lang-context="zh"><a href="#supplychain" class="nav-link" onclick="switchSection('supplychain')">全球供应链</a></li>
+                <li class="nav-item" lang-context="zh"><a href="#advantages" class="nav-link" onclick="switchSection('advantages')">核心优势</a></li>
+                <li class="nav-item" lang-context="zh"><a href="#vision" class="nav-link" onclick="switchSection('vision')">战略愿景</a></li>
+                <li class="nav-item" lang-context="zh"><a href="#contact" class="nav-link" onclick="switchSection('contact')">联系我们</a></li>
+                
+                <li class="nav-item" lang-context="en"><a href="#overview" class="nav-link active" onclick="switchSection('overview')">Overview</a></li>
+                <li class="nav-item" lang-context="en"><a href="#lithium" class="nav-link" onclick="switchSection('lithium')">New Energy</a></li>
+                <li class="nav-item" lang-context="en"><a href="#electronics" class="nav-link" onclick="switchSection('electronics')">Electronics</a></li>
+                <li class="nav-item" lang-context="en"><a href="#furniture" class="nav-link" onclick="switchSection('furniture')">Smart Home</a></li>
+                <li class="nav-item" lang-context="en"><a href="#supplychain" class="nav-link" onclick="switchSection('supplychain')">Supply Chain</a></li>
+                <li class="nav-item" lang-context="en"><a href="#advantages" class="nav-link" onclick="switchSection('advantages')">Advantages</a></li>
+                <li class="nav-item" lang-context="en"><a href="#vision" class="nav-link" onclick="switchSection('vision')">Vision</a></li>
+                <li class="nav-item" lang-context="en"><a href="#contact" class="nav-link" onclick="switchSection('contact')">Contact Us</a></li>
+
+                <li><button class="lang-switch-btn" onclick="toggleLanguage()">EN</button></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="hero-carousel">
+        <div class="carousel-slide active slide-1">
+            <div class="carousel-caption" lang-context="zh">
+                <h2>大宗贸易与新能源控股 · 聚焦大湾区实体业务</h2>
+                <p>我们扎根中国南方制造业名城——东莞，深耕锂电产业运营与全球供应链深度整合，构筑起多元化的商品双向跨境流通闭环。</p>
+            </div>
+            <div class="carousel-caption" lang-context="en">
+                <h2>Bulk Trade & New Energy · Focusing on GBA Operations</h2>
+                <p>Based in Dongguan, a renowned manufacturing city in China, we deeply cultivate new energy sectors and global supply chains, building a diversified two-way cross-border trade loop.</p>
+            </div>
+        </div>
+        <div class="carousel-slide slide-2">
+            <div class="carousel-caption" lang-context="zh">
+                <h2>东莞制造赋能 · 动力电池大宗贸易</h2>
+                <p>高效整合东南亚源头制造资源，为国内一线新能源汽车、储能大厂以及循环回收基地开辟安全高效的进口大宗商贸通道。</p>
+            </div>
+            <div class="carousel-caption" lang-context="en">
+                <h2>Empowered by Dongguan Base · Bulk Battery Trade</h2>
+                <p>Efficiently integrating SE Asia manufacturing resources to pave reliable trade corridors for domestic top-tier EV, ESS automakers, and sustainable recycling bases.</p>
+            </div>
+        </div>
+        <div class="carousel-slide slide-3">
+            <div class="carousel-caption" lang-context="zh">
+                <h2>前沿电子 · 依托大湾区双向进出口</h2>
+                <p>立足东莞电子信息产业集群腹地，一端助力国产智能终端走向全球，一端精准引入海外工业级高精尖电子元器件。</p>
+            </div>
+            <div class="carousel-caption" lang-context="en">
+                <h2>Advanced Electronics · Two-way Trade via GBA Cluster</h2>
+                <p>Based in the heart of Dongguan's IT cluster, driving domestic smart terminals to global markets while importing industrial-grade premium electronic components.</p>
+            </div>
+        </div>
+        <div class="carousel-slide slide-4">
+            <div class="carousel-caption" lang-context="zh">
+                <h2>智能家居 · 华南源头对接全球外销</h2>
+                <p>深度整合广东及东莞本土优质智能制造与现代家居链条，面向全球大型商业空间与住宅工程提供一站式大宗交付。</p>
+            </div>
+            <div class="carousel-caption" lang-context="en">
+                <h2>Smart Home · Sourcing from Southern China for Global Export</h2>
+                <p>Deeply integrating premium manufacturing and furnishings chains in Guangdong, providing bulk delivery and project customization for global commercial and residential sectors.</p>
+            </div>
+        </div>
+        <button class="carousel-btn prev" onclick="moveSlide(-1)">&#10094;</button>
+        <button class="carousel-btn next" onclick="moveSlide(1)">&#10095;</button>
+    </div>
+
+    <section id="overview-section" class="page-section active-section">
+        <div class="container">
+            <div class="section-header">
+                <h3 lang-context="zh">公司概览</h3>
+                <h3 lang-context="en">Company Overview</h3>
+            </div>
+            <div class="intro-grid">
+                <div class="intro-text" lang-context="zh">
+                    <p class="intro-highlight"><strong>“海外盛誉 · 崇尚完美 · 跨境枢纽”</strong></p>
+                    <p><strong>东莞浩霸新能源科技有限公司</strong>是一家在进出口全球大宗贸易、新能源产业供应链领域深具实力的创新科技商贸企业。公司深度扎根于中国南方的制造业名城——东莞，依托粤港澳大湾区无与伦比的完整产业链条与成熟物流生态，深耕“锂电新能源、前沿电子、智能家居”三大核心战略板块，构建起多维、敏捷的商品流通中枢。</p>
+                    <p>作为大湾区具备全面整合能力的供应链企业，我们不仅向下深扎东南亚及全球优质制造源头，更能向上对接国内庞大的买家网络与大型生产实体。我们紧密依托本土实业配套，发挥大湾区精工制造与全球分拨分销的组合优势，为全球合作伙伴提供更高效、更具市场竞争力的全链条跨境大宗商品交付方案。</p>
+                </div>
+                <div class="intro-text" lang-context="en">
+                    <p class="intro-highlight">"Global Reputation · Pursuit of Perfection · Cross-border Hub"</p>
+                    <p><strong>Dongguan Rhoba New Energy Technology Co., Ltd.</strong> is a high-capacity international trading and supply chain enterprise. Deeply rooted in Dongguan, a world-famous manufacturing hub, the company leverages the comprehensive industrial cluster of the Greater Bay Area. We focus on three strategic pillars: <strong>"Lithium Battery New Energy, Advanced Electronics, and Smart Home"</strong>, creating a highly efficient international trade pipeline.</p>
+                    <p>As a highly dynamic supply chain hub in Southern China, we connect top-tier overseas manufacturing sources with a broad industrial customer network. Backed by solid local industrial integration, we utilize GBA's precision manufacturing and flexible distribution networks to deliver highly competitive global commodity solutions and premium trade services.</p>
+                </div>
+                <div class="intro-metrics">
+                    <div class="metric-item">
+                        <h4>2015</h4>
+                        <p lang-context="zh">业务启航年份</p>
+                        <p lang-context="en">Operation Since</p>
+                    </div>
+                    <div class="metric-item">
+                        <h4 lang-context="zh">东莞</h4>
+                        <h4 lang-context="en">Dongguan</h4>
+                        <p lang-context="zh">制造与物流产业中枢</p>
+                        <p lang-context="en">Industrial Core Hub</p>
+                    </div>
+                    <div class="metric-item">
+                        <h4 lang-context="zh">双向</h4>
+                        <h4 lang-context="en">2-Way</h4>
+                        <p lang-context="zh">国际大宗进出口网络</p>
+                        <p lang-context="en">Global Commodity Network</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="lithium-section" class="page-section">
+        <div class="container">
+            <div class="section-header">
+                <h3 lang-context="zh">锂电池新能源产品矩阵</h3>
+                <h3 lang-context="en">Lithium Battery & New Energy Portfolio</h3>
+            </div>
+
+            <div class="lithium-header-desc" lang-context="zh">
+                <h3 style="color: var(--primary-color); font-weight: 600;">立足东莞业务中枢 · 绿色动力供应链枢纽</h3>
+                <p>锂电新能源是浩霸集团倾力打造的支柱核心。业务全面以<strong>东莞浩霸新能源科技有限公司</strong>为主导开展实施，深度对接东南亚等海外专业新能源制造厂商，构建起稳固的高品质动力电芯与系统模组海外采购链。公司在合规法制化框架下，以服务大中华区市场的进口大宗贸易为主体，同时协同海外其他区域的出口贸易。</p>
+                <p>依托大湾区卓越的物流配套与技术落地承接能力，我们引入的优质新能源动力产品精准定向服务于国内及全球的<strong>新能源汽车制造大厂、工业级储能设备商、机器人制造巨头以及高功率电动工具企业</strong>，提供安全、稳定、具备强竞争力的跨境绿色动力核心组件供应链方案。</p>
+            </div>
+            
+            <div class="lithium-header-desc" lang-context="en">
+                <h3 style="color: var(--primary-color); font-weight: 600;">Anchored by Dongguan Core · Green Power Supply Chain Hub</h3>
+                <p>The lithium new energy sector stands as the group's vital pillar, with operations led primarily by our Dongguan Rhoba New Energy Tech company. We deeply engage professional new energy manufacturers in SE Asia, establishing secure overseas procurement routes for high-quality power cells and system modules. Our framework heavily focuses on compliant import trade serving the Greater China market, paired with supplementary exports globally.</p>
+                <p>Leveraging the Greater Bay Area's excellent logistics support and technology implementation capabilities, our premium battery products precisely serve major EV automakers, industrial energy storage manufacturers, robotics pioneers, and high-power electric tool enterprises worldwide, delivering secure and highly stable green power core component supply chain solutions.</p>
+            </div>
+
+            <div class="products-showcase-grid">
+                <script>
+                    const itemsData = [
+                        // 1-15: 全新电芯/模组系列
+                        { id: 1, path: "product/new_cell_1.jpg", zh_name: "BHM42-JH4", en_name: "BHM42-JH4", type_zh: "动力电池模组", type_en: "EV battery module", size: "985x483x113 mm", volt: "51.8 V", cap: "217.5 Ah" },
+                        { id: 2, path: "product/new_cell_2.jpg", zh_name: "BHM28-JH2", en_name: "BHM28-JH2", type_zh: "动力电池模组", type_en: "EV battery module", size: "565x51x100 mm", volt: "51.8 V", cap: "62 Ah" },
+                        { id: 3, path: "product/new_cell_3.jpg", zh_name: "BHM16-234A", en_name: "BHM16-234A", type_zh: "动力电池模组", type_en: "EV battery module", size: "630x462x126 mm", volt: "59.2 V", cap: "234 Ah" },
+                        { id: 4, path: "product/new_cell_4.jpg", zh_name: "BHM12-60A", en_name: "BHM12-60A", type_zh: "动力电池模组", type_en: "EV battery module", size: "412x312x155 mm", volt: "44.4 V", cap: "60 Ah" },
+                        { id: 5, path: "product/new_cell_5.jpg", zh_name: "BHSK12", en_name: "BHSK12", type_zh: "动力电池模组", type_en: "EV battery module", size: "230x150x150 mm", volt: "43.6 V", cap: "20 Ah" },
+                        { id: 6, path: "product/new_cell_6.jpg", zh_name: "BHL3JH", en_name: "BHL3JH", type_zh: "动力电池模组", type_en: "EV battery module", size: "425x127x103 mm", volt: "25.9 V", cap: "63 Ah" },
+                        { id: 7, path: "product/new_cell_7.jpg", zh_name: "BHL58E", en_name: "BHL58E", type_zh: "动力电池模组", type_en: "EV battery module", size: "358x151x109 mm", volt: "14.8 V", cap: "174 Ah" },
+                        { id: 8, path: "product/new_cell_8.jpg", zh_name: "BHL66E", en_name: "BHL66E", type_zh: "动力电池模组", type_en: "EV battery module", size: "390x151x109 mm", volt: "22.2 V", cap: "132 Ah" },
+                        { id: 9, path: "product/new_cell_9.jpg", zh_name: "BHL78E", en_name: "BHL78E", type_zh: "动力电池模组", type_en: "EV battery module", size: "590x223x109 mm", volt: "44.4 V", cap: "156 Ah" },
+                        { id: 10, path: "product/new_cell_10.jpg", zh_name: "BHL94S", en_name: "BHL94S", type_zh: "动力电池模组", type_en: "EV battery module", size: "610x375x160 mm", volt: "80.96 V", cap: "94 Ah" },
+                        { id: 11, path: "product/new_cell_11.jpg", zh_name: "BHL864W", en_name: "BHL864W", type_zh: "动力电池模组", type_en: "EV battery module", size: "585x390x161 mm", volt: "44.4 V", cap: "360 Ah" },
+                        { id: 12, path: "product/new_cell_12.jpg", zh_name: "BHL711G", en_name: "BHL711G", type_zh: "电动工具模组", type_en: "Power tool module", size: "230x76x74 mm", volt: "36 V", cap: "2.5 Ah" },
+                        { id: 13, path: "product/new_cell_13.jpg", zh_name: "BHL712G", en_name: "BHL712G", type_zh: "电动工具模组", type_en: "Power tool module", size: "184x82x85 mm", volt: "25.2 V", cap: "3.6 Ah" },
+                        { id: 14, path: "product/new_cell_14.jpg", zh_name: "BHL611G", en_name: "BHL611G", type_zh: "电动工具模组", type_en: "Power tool module", size: "163x75x98 mm", volt: "25.2 V", cap: "2.6 Ah" },
+                        { id: 15, path: "product/new_cell_15.jpg", zh_name: "BHL864D", en_name: "BHL864D", type_zh: "动力电池模组", type_en: "EV battery module", size: "585x390x161 mm", volt: "44.4 V", cap: "360 Ah" },
+                        
+                        // 16-30: 梯次利用再生系列
+                        { id: 16, path: "product/echelon_1.jpg", zh_name: "BHL48S", en_name: "BHL48S", type_zh: "动力电池模组", type_en: "EV battery module", size: "355x150x109 mm", volt: "44.4 V", cap: "48 Ah" },
+                        { id: 17, path: "product/echelon_2.jpg", zh_name: "BHL3JP", en_name: "BHL3JP", type_zh: "动力电池模组", type_en: "EV battery module", size: "405x110x103 mm", volt: "7.2 V", cap: "189 Ah" },
+                        { id: 18, path: "product/echelon_3.jpg", zh_name: "BHL16S", en_name: "BHL16S", type_zh: "动力电池模组", type_en: "EV battery module", size: "995x350x112 mm", volt: "59.2 V", cap: "232 Ah" },
+                        { id: 19, path: "product/echelon_4.jpg", zh_name: "BHL14S", en_name: "BHL14S", type_zh: "动力电池模组", type_en: "EV battery module", size: "875x350x112 mm", volt: "51.8 V", cap: "232 Ah" },
+                        { id: 20, path: "product/echelon_5.jpg", zh_name: "BHL10S", en_name: "BHL10S", type_zh: "动力电池模组", type_en: "EV battery module", size: "750x350x116 mm", volt: "37 V", cap: "300 Ah" },
+                        { id: 21, path: "product/echelon_6.jpg", zh_name: "BHL11S", en_name: "BHL11S", type_zh: "动力电池模组", type_en: "EV battery module", size: "680x350x116 mm", volt: "40.7 V", cap: "232 Ah" },
+                        { id: 22, path: "product/echelon_7.jpg", zh_name: "BHL08S", en_name: "BHL08S", type_zh: "动力电池模组", type_en: "EV battery module", size: "610x350x112 mm", volt: "29.6 V", cap: "300 Ah" },
+                        { id: 23, path: "product/echelon_8.jpg", zh_name: "BHL09S", en_name: "BHL09S", type_zh: "动力电池模组", type_en: "EV battery module", size: "570x350x112 mm", volt: "33.3 V", cap: "232 Ah" },
+                        { id: 24, path: "product/echelon_9.jpg", zh_name: "BHL1053", en_name: "BHL1053", type_zh: "动力电池模组", type_en: "EV battery module", size: "740x686x97 mm", volt: "33.3 V", cap: "585 Ah" },
+                        { id: 25, path: "product/echelon_10.jpg", zh_name: "BHL55K", en_name: "BHL55K", type_zh: "动力电池模组", type_en: "EV battery module", size: "430x160x110 mm", volt: "14.8 V", cap: "165 Ah" },
+                        { id: 26, path: "product/echelon_11.jpg", zh_name: "BHL63JH", en_name: "BHL63JH", type_zh: "动力电池模组", type_en: "EV battery module", size: "404x251x104 mm", volt: "25.9 V", cap: "126 Ah" },
+                        { id: 27, path: "product/echelon_12.jpg", zh_name: "BHL32N", en_name: "BHL32N", type_zh: "动力电池模组", type_en: "EV battery module", size: "830x410x123 mm", volt: "59.2 V", cap: "298 Ah" },
+                        { id: 28, path: "product/echelon_13.jpg", zh_name: "BHL36N", en_name: "BHL36N", type_zh: "动力电池模组", type_en: "EV battery module", size: "900x410x119 mm", volt: "66.6 V", cap: "298 Ah" },
+                        { id: 29, path: "product/echelon_14.jpg", zh_name: "BHL1865", en_name: "BHL1865", type_zh: "高倍率圆柱电芯 (NCM)", type_en: "High-rate cylindrical cells", size: "Ø 18×65 mm", volt: "3.7 V", cap: "2.9 Ah" },
+                        { id: 30, path: "product/echelon_15.jpg", zh_name: "BHL217A", en_name: "BHL217A", type_zh: "高倍率圆柱电芯 (NCM)", type_en: "High-rate cylindrical cells", size: "Ø 21×70 mm", volt: "3.7 V", cap: "4.8 Ah" },
+
+                        // 31-33: 大宗黑粉原料大项
+                        { id: 31, path: "product/black_mass_1.jpg", zh_name: "BHL550C", en_name: "BHL550C", type_zh: "高能量软包动力电芯 (NCM)", type_en: "High Energy Lithium-ion Power Cell", size: "80x100x550 mm", volt: "3.7 V", cap: "78 Ah" },
+                        { id: 32, path: "product/black_mass_2.jpg", zh_name: "BHL355C", en_name: "BHL355C", type_zh: "高能量软包动力电芯(NCM)", type_en: "High Energy Lithium-ion Power Cell", size: "12x100x350 mm", volt: "3.7 V", cap: "72 Ah" },
+                        { id: 33, path: "product/black_mass_3.jpg", zh_name: "工业级碳酸锂 / 粗制黑粉", en_name: "	Industrial-Grade Lithium Carbonate / Black Mass", type_zh: "大宗粗提中间体", type_en: "Lithium Carbonate", size: "——", volt: "——", cap: "——" }
+                    ];
+
+                    for(let i=0; i < itemsData.length; i++) {
+                        const item = itemsData[i];
+                        document.write(`
+                        <div class="product-spec-card">
+                            <img src="${item.path}" onerror="this.src='image/ev_battery_mould.jpg'" alt="Rhoba Energy Product">
+                            <div class="card-body">
+                                <div lang-context="zh">
+                                    <h5>${item.zh_name}</h5>
+                                    <table class="spec-table">
+                                        <tr><td class="label">产品类型</td><td>${item.type_zh}</td></tr>
+                                        <tr><td class="label">尺寸规格</td><td>${item.size}</td></tr>
+                                        <tr><td class="label">额定电压</td><td>${item.volt}</td></tr>
+                                        <tr><td class="label">额定容量</td><td>${item.cap}</td></tr>
+                                        <tr><td class="label">原产地</td><td>马来西亚</td></tr>
+                                    </table>
+                                </div>
+
+                                <div lang-context="en">
+                                    <h5>${item.en_name}</h5>
+                                    <table class="spec-table">
+                                        <tr><td class="label">Product Type</td><td>${item.type_en}</td></tr>
+                                        <tr><td class="label">Dimensions</td><td>${item.size}</td></tr>
+                                        <tr><td class="label">Voltage</td><td>${item.volt}</td></tr>
+                                        <tr><td class="label">Capacity</td><td>${item.cap}</td></tr>
+                                        <tr><td class="label">Origin</td><td>Malaysia</td></tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        `);
+                    }
+                </script>
+            </div>
+        </div>
+    </section>
+
+    <section id="electronics-section" class="page-section">
+        <div class="container">
+            <div class="section-header">
+                <h3 lang-context="zh">前沿电子</h3>
+                <h3 lang-context="en">Advanced Electronics</h3>
+            </div>
+            <div class="product-grid">
+                <div class="product-detail" lang-context="zh">
+                    <h4>根植大湾区信息产业腹地 · 涵盖双向进出口业务</h4>
+                    <p>全面涵盖进口与出口双向业务。前沿电子板块核心深度依托于“世界工厂”东莞成熟完善的电子信息部件产业链。在出口贸易端，我们将高品质智慧终端、数码周边及消费电子高效推向全球海外市场；在进口贸易端，则依托东莞强大的制造消化能力，积极对接全球顶尖芯片与高端元器件渠道，引入高精尖工业级电子组件。</p>
+                    <div class="product-tags">
+                        <span>东莞配套智慧终端全球出口</span>
+                        <span>工业级电子组件合规进口</span>
+                        <span>大湾区敏捷外贸渠道中枢</span>
+                    </div>
+                </div>
+                <div class="product-detail" lang-context="en">
+                    <h4>Rooted in GBA IT Cluster · Covering Two-way Import & Export</h4>
+                    <p>The electronics sector comprehensively encompasses both import and export dimensions. Closely aligned with global digital tech evolution, our operations are deeply integrated with Dongguan's mature and world-leading electronic information supply chains. On the export side, we efficiently push premium smart terminals into global markets. On the import side, we introduce advanced industrial-grade components to serve as an agile hub in the global network.</p>
+                    <div class="product-tags">
+                        <span>Global Export of Dongguan-Sourced Terminals</span>
+                        <span>Compliant Import of Industrial Components</span>
+                        <span>GBA Agile Foreign Trade Hub</span>
+                    </div>
+                </div>
+                <img src="image/electronics_display.jpg" alt="电子产品板块展示" class="section-img">
+            </div>
+        </div>
+    </section>
+
+    <section id="furniture-section" class="page-section">
+        <div class="container">
+            <div class="section-header">
+                <h3 lang-context="zh">智能家居</h3>
+                <h3 lang-context="en">Smart Home & Furnishings</h3>
+            </div>
+            <div class="product-grid">
+                <div class="product-detail" lang-context="zh">
+                    <h4>整合广东及东莞优质源头 · 专注全球出口外销</h4>
+                    <p>智能家居与现代空间陈设是公司外贸版图中的实力支柱。业务运作重度聚焦并对接中国东莞及广东本土极具实力的优质现代化生产企业与智能硬件制造基地，充分发挥大湾区精工制造与产业供应链集聚的长板优势。公司全面以面向全球市场的出口贸易业务为主，为海外各类住宅项目、大型商业办公空间及高端酒店工程提供商品交付方案。</p>
+                    <div class="product-tags">
+                        <span>东莞及广东优质源头工厂对接</span>
+                        <span>智能家居全球出口贸易</span>
+                        <span>商业办公空间大宗出口</span>
+                    </div>
+                </div>
+                <div class="product-detail" lang-context="en">
+                    <h4>Integrating Dongguan & GD Sources · Focusing on Global Exports</h4>
+                    <p>Smart home and modern furnishings stand as core pillars of our international trade map. This sector deeply engages premium modern manufacturing bases in Dongguan and throughout Guangdong. Focusing heavily on global export trade, our Dongguan business hub provides excellent commodity delivery solutions ranging from bulk single-item sourcing to multinational project customization.</p>
+                    <div class="product-tags">
+                        <span>Dongguan & GD Source Factory Engagement</span>
+                        <span>Global Smart Home Export Trade</span>
+                        <span>Bulk Export for Commercial Spaces</span>
+                    </div>
+                </div>
+                <img src="image/furniture_display.jpg" alt="精工家具与智能家居展示" class="section-img">
+            </div>
+        </div>
+    </section>
+
+    <section id="supplychain-section" class="page-section">
+        <div class="container">
+            <div class="section-header">
+                <h3 lang-context="zh">全球供应链与贸易网络</h3>
+                <h3 lang-context="en">Global Supply Chain & Trade Network</h3>
+            </div>
+            <div class="product-grid">
+                <div class="product-detail" lang-context="zh">
+                    <h4>互联全球 · 敏捷安全</h4>
+                    <p>公司以东莞业务基地为跨境物流、仓储与分拨调度中心。凭借经验丰富的外贸精英团队，熟稔各区域、高复杂度的进出口关税、商检与合法报关法规。我们立足东莞等大湾区制造腹地，纵深连通东南亚群岛制造商网络，在全球建立起高度稳定、灵活且深受信赖的双向采购、跨境物流与多式联运分销网。</p>
+                    <div class="product-tags">
+                        <span>东莞实体大宗采购中心</span>
+                        <span>国际合规双向通关</span>
+                        <span>仓储调配与敏捷供应链</span>
+                    </div>
+                </div>
+                <div class="product-detail" lang-context="en">
+                    <h4>Globally Connected, Agile & Secure</h4>
+                    <p>Utilizing our Dongguan business base as the cross-border logistics, warehousing, and distribution scheduling center. Driven by an experienced elite trade team, we are well-versed in cross-regional, complex import/export tariffs, commodity inspections, and compliant customs clearance regulations. Grounded in Dongguan, we have established a highly stable global network.</p>
+                    <div class="product-tags">
+                        <span>Dongguan Sourcing & Distribution Hub</span>
+                        <span>Compliant Two-way Customs Clearance</span>
+                        <span>Agile Logistics Supply Chain</span>
+                    </div>
+                </div>
+                <img src="image/supplychain_map.jpg" alt="全球供应链与贸易网络地图" class="section-img">
+            </div>
+        </div>
+    </section>
+
+    <section id="advantages-section" class="page-section">
+        <div class="container">
+            <div class="section-header">
+                <h3 lang-context="zh">核心优势</h3>
+                <h3 lang-context="en">Core Advantages</h3>
+            </div>
+            <div class="adv-cards">
+                <div class="adv-card">
+                    <h4 lang-context="zh">极强实体运营能力</h4>
+                    <h4 lang-context="en">Solid Operations</h4>
+                    <p lang-context="zh">业务以东莞本地新能源实体公司为核心，扎根大湾区制造产业群核心，能够进行敏捷的技术对接、精细质检、大宗仓储分拨与上下游快速响应。</p>
+                    <p lang-context="en">Our operations are anchored directly by our Dongguan entity. Being rooted in the GBA manufacturing core allows for agile technical alignment, quality control, efficient warehousing, and swift supply chain responsiveness.</p>
+                </div>
+                <div class="adv-card">
+                    <h4 lang-context="zh">跨国双向多元贸易</h4>
+                    <h4 lang-context="en">Multinational 2-Way Trade</h4>
+                    <p lang-context="zh">兼顾传统家居大宗商品出口与前沿新能源核心部件、循环粉料的大宗安全进口，进出口双向并举，具备极强的国际化资源整合力与抗风险实力。</p>
+                    <p lang-context="en">Balancing bulk traditional furnishings export with compliant bulk import of frontier new energy cells and recycling black mass. Dual actions demonstrate robust resource integration and anti-risk capacity.</p>
+                </div>
+                <div class="adv-card">
+                    <h4 lang-context="zh">稳固的跨区域渠道</h4>
+                    <h4 lang-context="en">Solid Regional Channels</h4>
+                    <p lang-context="zh">高效协同联动国内实体运营基地、广东本土完整供应链、东南亚制造源头与海内外大厂下游网络，打通合规绿色的国际跨境大宗大通道。</p>
+                    <p lang-context="en">Fluidly linking our domestic operational base, Guangdong supply chains, and SE Asian manufacturing sources with downstream networks of global tier-one manufacturers and refining plants.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="vision-section" class="page-section">
+        <div class="container">
+            <div class="section-header">
+                <h3 lang-context="zh">战略愿景</h3>
+                <h3 lang-context="en">Strategic Vision</h3>
+            </div>
+            <div class="vision-box">
+                <p class="vision-quote" lang-context="zh">“打造具备全球资源配置力、以新能源实体业务为主干的国际化标杆贸易企业”</p>
+                <p class="vision-quote" lang-context="en">"To build a globally competitive trade enterprise with robust resource allocation, anchored by new energy operations"</p>
+                <p lang-context="zh">我们将始终以稳健敏捷的步伐，不断强化东莞业务基地的实体功能。我们立足大湾区、纵深东南亚、面向全世界，坚持不懈地优化全新锂电、再生循环等全球大宗商品双向流通链条，朝着国际化标杆贸易企业稳步迈进，誓为全球下游制造厂商与合作伙伴提供更安全、高效、最具市场竞争力的商品供应链服务。</p>
+                <p lang-context="en">We will continuously move forward with stable yet agile steps, strengthening the solid functions of our Dongguan business base. Rooted in the GBA, reaching into SE Asia, and looking globally, we unswervingly optimize global bulk commodity circulation chains (including battery cells and black mass) to offer safer, more efficient, and highly competitive supply chain services worldwide.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact-section" class="page-section">
+        <div class="container">
+            <div class="section-header">
+                <h3 lang-context="zh">联系我们</h3>
+                <h3 lang-context="en">Contact Us</h3>
+            </div>
+            <div class="contact-wrapper">
+                <div class="contact-info-block">
+                    <div class="info-row" style="background-color: #F1F5FA; padding: 15px; border-radius: 4px; border-left: 4px solid var(--accent-color); margin-bottom: 25px;">
+                        <span style="display:inline-block; font-size:11px; background-color:var(--primary-color); color:var(--white); padding:2px 8px; border-radius:3px; font-weight:bold; margin-bottom:5px;">OFFICIAL EMAIL / 官方商务邮箱</span>
+                        <h4 style="font-size:20px; color:var(--primary-color); margin:5px 0;"><a href="mailto:service@rhobahk.com" style="color:var(--primary-color); text-decoration:underline;">service@rhobahk.com</a></h4>
+                        <p style="font-size:13px; color:var(--text-light);" lang-context="zh">欢迎全球买家、东南亚新能源制造厂及大湾区优质实业生产企业发送商务合作意向，我们的跨境经理将在24小时内为您对接。</p>
+                        <p style="font-size:13px; color:var(--text-light);" lang-context="en">Global buyers, SE Asia partners, and industrial factories are welcome to send business inquiries. Our trade managers will respond within 24 hours.</p>
+                    </div>
+
+                    <div class="info-row">
+                        <label>DONGGUAN OPERATIONS / 东莞业务总部</label>
+                        <h4 lang-context="zh">东莞浩霸新能源科技有限公司</h4>
+                        <h4 lang-context="en">DONGGUAN RHOBA NEW ENERGY TECHNOLOGY CO., LTD.</h4>
+                        <p lang-context="zh"><strong>公司地址：</strong>广东省东莞市虎门镇连升路虎门万达广场SOHO 2栋603室</p>
+                        <p lang-context="en"><strong>Address:</strong> Rm.603, Bldg SOHO 2, Humen Wanda Plaza, Humen, Dongguan, Guangdong, China</p>
+                        <p style="margin-top: 5px;"><strong lang-context="zh">商务合作热线：</strong><strong lang-context="en">Hotline: </strong>+86 1353 2663 938</p>
+                    </div>
+                </div>
+                
+                <div class="contact-form" lang-context="zh">
+                    <form id="biz-contact-form-zh" onsubmit="handleFormSubmitZh(event)">
+                        <input type="text" id="form-name-zh" placeholder="您的姓名" required>
+                        <input type="tel" id="form-phone-zh" placeholder="联络电话" required>
+                        <input type="email" id="form-email-zh" placeholder="电子邮件地址" required>
+                        <textarea id="form-msg-zh" rows="5" placeholder="请详细填写您的大宗商务需求或留言内容..." required></textarea>
+                        <button type="submit">提交留言需求</button>
+                    </form>
+                </div>
+
+                <div class="contact-form" lang-context="en">
+                    <form id="biz-contact-form-en" onsubmit="handleFormSubmitEn(event)">
+                        <input type="text" id="form-name-en" placeholder="Your Name" required>
+                        <input type="tel" id="form-phone-en" placeholder="Contact Phone" required>
+                        <input type="email" id="form-email-en" placeholder="Email Address" required>
+                        <textarea id="form-msg-en" rows="5" placeholder="Enter your business inquiry or bulk trading message here..." required></textarea>
+                        <button type="submit">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 👑 优化后的全景独立多语页脚架构 -->
+    <footer>
+        <div class="footer-container">
+            
+            <!-- 🔴 页脚上半部分：品牌标识与核心邮箱（中英文绝对解耦隔离） -->
+            <!-- 中文状态显示 -->
+            <div class="footer-top" lang-context="zh">
+                <div class="footer-brand">
+                    <h4>东莞浩霸新能源科技有限公司</h4>
+                    <p>RHOBA NEW ENERGY TECHNOLOGY CO., LTD.</p>
+                </div>
+                <div class="footer-contact-info">
+                    <span>官方商务合作信箱</span>
+                    <a href="mailto:service@rhobahk.com" class="footer-email-link">service@rhobahk.com</a>
+                </div>
+            </div>
+            <!-- 英文状态显示 -->
+            <div class="footer-top" lang-context="en">
+                <div class="footer-brand">
+                    <h4>DONGGUAN RHOBA NEW ENERGY TECHNOLOGY CO., LTD.</h4>
+                    <p>GLOBAL BULK COMMODITY SUPPLY CHAIN HUB</p>
+                </div>
+                <div class="footer-contact-info">
+                    <span>OFFICIAL BUSINESS EMAIL</span>
+                    <a href="mailto:service@rhobahk.com" class="footer-email-link">service@rhobahk.com</a>
+                </div>
+            </div>
+
+            <!-- 🔴 页脚中部部分：微型底部导航（同步页面单页锚点，优化动线体验） -->
+            <!-- 中文状态链接 -->
+            <div class="footer-middleware" lang-context="zh">
+                <ul class="footer-nav-links">
+                    <li><a href="#overview" onclick="switchSection('overview')">公司概览</a></li>
+                    <li><a href="#lithium" onclick="switchSection('lithium')">锂电新能源</a></li>
+                    <li><a href="#electronics" onclick="switchSection('electronics')">前沿电子</a></li>
+                    <li><a href="#furniture" onclick="switchSection('furniture')">智能家居</a></li>
+                    <li><a href="#supplychain" onclick="switchSection('supplychain')">全球供应链</a></li>
+                    <li><a href="#contact" onclick="switchSection('contact')">联系我们</a></li>
+                </ul>
+            </div>
+            <!-- 英文状态链接 -->
+            <div class="footer-middleware" lang-context="en">
+                <ul class="footer-nav-links">
+                    <li><a href="#overview" onclick="switchSection('overview')">Overview</a></li>
+                    <li><a href="#lithium" onclick="switchSection('lithium')">New Energy Portfolio</a></li>
+                    <li><a href="#electronics" onclick="switchSection('electronics')">Electronics</a></li>
+                    <li><a href="#furniture" onclick="switchSection('furniture')">Smart Home</a></li>
+                    <li><a href="#supplychain" onclick="switchSection('supplychain')">Supply Chain</a></li>
+                    <li><a href="#contact" onclick="switchSection('contact')">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <!-- 🔴 页脚下半部分：国家合规备案与合规版权声明区 -->
+            <!-- 中文版权与备案 -->
+            <div class="footer-bottom" lang-context="zh">
+                &copy; 2026 东莞浩霸新能源科技有限公司 版权所有。
+                <a href="https://beian.miit.gov.cn/" target="_blank" class="icp-link">粤ICP备2026123456号-1</a>
+            </div>
+            <!-- 英文版权与备案 -->
+            <div class="footer-bottom" lang-context="en">
+                &copy; 2026 RHOBA NEW ENERGY TECHNOLOGY CO., LTD. All Rights Reserved.
+                <a href="https://beian.miit.gov.cn/" target="_blank" class="icp-link">粤ICP备2026123456号-1</a>
+            </div>
+
+        </div>
+    </footer>
+
+    <script>
+        // --- 📲 移动端导航弹窗控制逻辑 ---
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const navMenuList = document.getElementById('nav-menu-list');
+
+        function toggleMobileMenu() {
+            mobileMenuBtn.classList.toggle('open');
+            navMenuList.classList.toggle('mobile-active');
+        }
+
+        function closeMobileMenu() {
+            mobileMenuBtn.classList.remove('open');
+            navMenuList.classList.remove('mobile-active');
+        }
+
+        // --- 独立版块动态切换与导航高亮同步 ---
+        function switchSection(sectionId, avoidScroll) {
+            const sections = document.querySelectorAll('.page-section');
+            sections.forEach(sec => sec.classList.remove('active-section'));
+            
+            const targetSection = document.getElementById(sectionId + '-section');
+            if (targetSection) {
+                targetSection.classList.add('active-section');
+            }
+
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => link.classList.remove('active'));
+            
+            const activeLinks = document.querySelectorAll(`a[href="#${sectionId}"]`);
+            activeLinks.forEach(link => link.classList.add('active'));
+
+            closeMobileMenu();
+
+            if (!avoidScroll && targetSection) {
+                window.scrollTo({
+                    top: document.querySelector('.hero-carousel').offsetHeight,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        function scrollToTop() {
+            switchSection('overview', true);
+            closeMobileMenu();
+            
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => link.classList.remove('active'));
+            
+            const overviewLinks = document.querySelectorAll('a[href="#overview"]');
+            overviewLinks.forEach(link => link.classList.add('active'));
+
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // --- 广告轮播图系统 ---
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+
+        function showSlide(index) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (index + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        function moveSlide(step) {
+            showSlide(currentSlide + step);
+        }
+
+        setInterval(() => {
+            moveSlide(1);
+        }, 5000);
+
+        // --- 🌐 完美切换双语核心逻辑 ---
+        function toggleLanguage() {
+            const body = document.body;
+            const btn = document.querySelector('.lang-switch-btn');
+            
+            if (body.classList.contains('lang-en')) {
+                body.classList.remove('lang-en');
+                btn.textContent = 'EN';
+                document.documentElement.lang = 'zh-CN';
+            } else {
+                body.classList.add('lang-en');
+                btn.textContent = '简';
+                document.documentElement.lang = 'en';
+            }
+        }
+
+        // --- 🌐 中文表单提交 ---
+        function handleFormSubmitZh(event) {
+            event.preventDefault();
+            const name = document.getElementById('form-name-zh').value.trim();
+            const phone = document.getElementById('form-phone-zh').value.trim();
+            const email = document.getElementById('form-email-zh').value.trim();
+            const msg = document.getElementById('form-msg-zh').value.trim();
+            
+            const officialEmail = "service@rhobahk.com";
+            const subject = `【大宗业务咨询】来自东莞浩霸官网客户：${name} (${phone})`;
+            const body = `尊敬的浩霸新能源商务运营团队：\n\n您好！收到一笔来自官网客户的在线留言商务咨询：\n\n客户姓名：${name}\n联络电话：${phone}\n电子邮箱：${email}\n\n需求详情：\n${msg}`;
+            
+            window.location.href = `mailto:${officialEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            
+            setTimeout(() => {
+                alert('感谢您的留言！已唤醒您的本地电子邮箱，请直接点击发送邮件。');
+                document.getElementById('biz-contact-form-zh').reset();
+            }, 300);
+        }
+
+        // --- 🌐 英文表单提交 ---
+        function handleFormSubmitEn(event) {
+            event.preventDefault();
+            const name = document.getElementById('form-name-en').value.trim();
+            const phone = document.getElementById('form-phone-en').value.trim();
+            const email = document.getElementById('form-email-en').value.trim();
+            const msg = document.getElementById('form-msg-en').value.trim();
+            
+            const officialEmail = "service@rhobahk.com";
+            const subject = `[Bulk Business Inquiry] from Dongguan Rhoba Official Website: ${name} (${phone})`;
+            const body = `Dear Rhoba New Energy Team,\n\nNew business inquiry details:\n\nClient Name: ${name}\nContact Phone: ${phone}\nClient Email: ${email}\n\nInquiry Details:\n${msg}`;
+            
+            window.location.href = `mailto:${officialEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            
+            setTimeout(() => {
+                alert('Thank you for your message! Waking up your local mailbox to complete the inquiry delivery.');
+                document.getElementById('biz-contact-form-en').reset();
+            }, 300);
+        }
+    </script>
+</body>
+</html>
